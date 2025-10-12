@@ -1,0 +1,247 @@
+:root {
+  --primary: #2b2a72;
+  --accent: #ffcc00;
+  --button: #ff6600;
+  --button-hover: #e05500;
+  --text: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Header Base */
+.site-header {
+  background: linear-gradient(90deg, var(--primary), #4a47a3);
+  color: var(--text);
+  padding: 15px 0;
+  box-shadow: 0 4px 12px var(--shadow);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Flexbox Layout */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  order: -1;
+  margin-left: 0;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+.hamburger:hover {
+  transform: scale(1.05);
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--text);
+  transition: all 0.3s ease;
+}
+
+/* --- Glassmorphism Mobile Menu --- */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 65%;
+  max-width: 300px;
+  padding: 25px;
+  z-index: 999;
+  background: rgba(43, 42, 114, 0.629); /* semi-transparent background */
+  backdrop-filter: blur(10px); /* smooth blur */
+  box-shadow: 0 8px 20px var(--shadow);
+  border-radius: 0 10px 10px 0;
+  animation: slideIn 0.3s ease forwards;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+
+
+.mobile-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 15px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.256);
+}
+
+/* Logo */
+.logo a {
+  color: var(--text);
+  font-family: 'Arial', sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.logo a:hover {
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.main-nav a.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.main-nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Search Bar */
+.nav-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-search input {
+  padding: 10px 40px 10px 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  width: 200px;
+  transition: width 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-search input:focus {
+  width: 250px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-search button {
+  position: absolute;
+  right: 0;
+  padding: 10px 15px;
+  border: none;
+  background: var(--button);
+  color: var(--text);
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.nav-search button:hover {
+  background: var(--button-hover);
+}
+
+/* Category Menu */
+.category-menu {
+  position: relative;
+}
+
+.category-menu span {
+  color: var(--text);
+  font-size: 1rem;
+  padding: 10px;
+  display: block;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.category-menu span:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.category-submenu {
+  display: none;
+  background-color:rgb(236, 138, 81);
+  flex-direction: column;
+  padding-left: 20px;
+  border-radius: 3px;
+}
+
+.category-submenu.active {
+  display: flex;
+}
+
+.category-submenu a {
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 8px;
+}
+
+.category-submenu a:hover {
+  background: rgba(65, 75, 76, 0.362);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-search input {
+      width: 150px;
+  }
+
+  .nav-search input:focus {
+      width: 200px;
+  }
+}
+/* Animate slide in from left */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Ensure content below header is not overlapped */
+body {
+  padding-top: 70px; /* Adjust based on header height */
+}

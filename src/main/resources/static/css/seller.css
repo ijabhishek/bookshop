@@ -1,0 +1,14 @@
+.form-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:12px; background:white; padding:12px; border-radius:8px;
+  }
+  .form-actions { grid-column: 1 / -1; display:flex; gap:10px; align-items:center; }
+  
+  .seller-book {
+    display:flex; align-items:center; gap:12px;
+    background:white; padding:10px; border-radius:8px;
+    margin-top:8px; box-shadow:0 4px 12px rgba(15,23,42,0.03);
+  }
+  .seller-thumb { width:80px; height:100px; object-fit:cover; }
+  .seller-actions { margin-left:auto; display:flex; gap:8px; }
+  

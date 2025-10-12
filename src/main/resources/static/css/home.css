@@ -1,0 +1,169 @@
+/* General Body */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Ensure you have this image at the specified path for the background */
+    background-image: url("/images/aboutbg.jpg"); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #a7f3d0, #3b82f6);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+.hero-section p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+.shop-now-btn {
+    text-decoration: none;
+    background: white;
+    color: #3b82f6;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.shop-now-btn:hover {
+    background-color: #e0f2fe;
+    color: #2563eb;
+}
+
+/* Books Container */
+.books-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Book Card - UPDATED: Adds perspective for 'view of books' effect */
+/* home.css - Make sure .book-card has proper height management */
+.book-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 250px; /* Fixed width for consistent cards */
+    text-align: center;
+    transform: perspective(1000px) rotateY(0deg); 
+    transition: transform 0.4s ease, box-shadow 0.2s;
+    padding: 15px;
+    position: relative; 
+    display: flex; /* Use flexbox to organize content vertically */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: space-between; /* Pushes footer elements to the bottom */
+}
+.book-card:hover {
+    /* Enhanced hover effect with a slight lift and stronger 3D tilt */
+    transform: perspective(1000px) translateY(-8px) rotateY(3deg); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Book Image - UPDATED: Ensures the full image shows */
+.book-image {
+    width: 100%; /* Ensures the image takes the full width of its parent */
+    height: 300px; /* Fixed height for consistent card layout */
+    object-fit: contain; /* THIS IS CRUCIAL: Ensures the whole image is visible */
+    background-color: #f7f7f7; /* Light background for any empty space if image is not aspect-ratio-friendly */
+    border-radius: 8px;
+    padding: 5px; /* A little breathing room inside the image area */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+.book-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Ensures the link takes up its container space */
+}
+
+
+/* Book Info */
+.book-title {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1f2937;
+}
+.book-price {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #374151;
+}
+
+/* NEW: Original Price (should be 'cutted') */
+.original-price {
+    text-decoration: line-through; /* This is the 'cutted' style */
+    color: #9ca3af; 
+    font-size: 14px; 
+    margin-right: 5px; 
+}
+
+/* Discounted Price - UPDATED: Makes the font 'longer' (larger) */
+.discounted-price {
+    color: #ef4444; /* Red color for discount */
+    font-weight: bold;
+    /* Increased font size for 'little bit longer' effect */
+    font-size: 20px; 
+    margin-left: 0; 
+}
+
+/* NEW: Engaging Discount Badge */
+.discount-badge {
+    position: absolute;
+    top: -10px; /* Position above the top of the card */
+    right: -10px; /* Position to the right of the card */
+    background-color: #f59e0b; /* Amber color for a stand-out badge */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%; /* Circle shape for a 'seal' look */
+    font-weight: 900;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    /* Subtle 3D tilt to match the book card */
+    transform: rotate(10deg); 
+    z-index: 10;
+}
+
+.book-desc {
+    font-size: 14px;
+    color: #6b7280;
+    height: 60px;
+    overflow: hidden;
+}
+.stock {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #059669;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.add-to-cart-btn:hover {
+    background-color: #2563eb;
+}

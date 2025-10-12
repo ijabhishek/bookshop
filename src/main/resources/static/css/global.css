@@ -1,0 +1,41 @@
+:root {
+    --accent: #ff7a18;
+    --primary: #2b6cb0;
+    --danger: #d9534f;
+    --bg: #f7fafc;
+    --text: #111827;
+    --muted: #6b7280;
+    --card: #ffffff;
+  }
+  
+  * { box-sizing: border-box; }
+  /* Recommended Update for Fixed Header Support */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  /* Add padding-top here to push all content below the fixed 60px header */
+  padding-top: 60px; 
+  /* Ensures the footer sticks to the bottom on short pages */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Also, ensure your .container is set up to allow the new .content-wrap to flex */
+.container { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+/* You may need to remove padding from the .container class to apply it to the content-wrap instead, 
+ but for now, the 'padding-top: 60px' on the body should be sufficient. */
+  /* Forms */
+input, select, textarea {
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:0.95rem;
+}
+  
