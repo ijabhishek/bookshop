@@ -78,7 +78,7 @@
                 <div class="form-group">
                     <label for="image">Book Cover (Leave empty to keep current)</label>
                     <input type="file" id="image" name="image" accept="image/*">
-                    <img src="<c:url value='/Uploads/${book.imageUrl}'/>" alt="Current Cover" style="width:100px;height:auto;margin-top:10px;">
+                    <img src="${book.imageUrl}" alt="Current Cover" style="width:100px;height:auto;margin-top:10px;">
                 </div>
                 <div class="form-group form-group-checkbox">
                     <input type="checkbox" id="bookAvailable" name="bookAvailable" value="true" ${book.bookAvailable ? 'checked' : ''}>

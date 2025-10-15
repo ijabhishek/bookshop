@@ -7,12 +7,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -54,7 +57,32 @@ public class HomeWebController {
 
     }
 
-    // @PostMapping("{}")
+    @PostMapping({"admin/editBook/updateBook"})
+    public String updateBookByAdmin(@ModelAttribute BookDTO bookDTO,
+                               @RequestParam("image") MultipartFile imageFile,
+                               RedirectAttributes redirectAttributes) {
+        try {
+            bookService.updateBook(bookDTO, imageFile);
+            redirectAttributes.addFlashAttribute("message", "Book saved successfully!");
+
+        }
+        catch (IOException e) {
+            
+            redirectAttributes.addFlashAttribute("error", "Error saving book.");
+
+        }
+        System.out.println("Received bookDTO: " + bookDTO);
+        System.out.println("Received file: " + imageFile.getOriginalFilename());
+
+        System.out.println("Book is Updated"); 
+        redirectAttributes.addFlashAttribute("message", "Book saved successfully!");
+        
+        return "redirect:/bookstore/admin";
+        
+    }
+    
+
+
     @GetMapping({"/seller"})
     public String getSellerPage(){
         return "seller";
@@ -96,8 +124,6 @@ public class HomeWebController {
 
     }
 
-
-
      @PostMapping("save")
      public String addNewBook(@ModelAttribute BookDTO bookDTO,
                             @RequestParam("image") MultipartFile imageFile,
@@ -123,9 +149,27 @@ public class HomeWebController {
                 
 
 
-     }
+    }
+
+    @GetMapping("admin/deleteBook/{bookId}")
+    public String deleteBookById(@PathVariable("bookId") Integer bookId) {
+        bookService.deleteBook(bookId);
+
+        return "redirect:/bookstore/home";
 
 
-    
-    
+        
+    }
+    @GetMapping("/viewbook")
+    public String viewBookResults(@RequestParam String keyword, Model model) {
+        List<Book> searchedBooks = bookService.getBooksByKeyword(keyword);
+        List<Book> suggestedBooks = bookService.getAllBooks(); // or random/popular books
+
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("searchedBooks", searchedBooks);
+        model.addAttribute("suggestedBooks", suggestedBooks);
+
+        return "viewbook"; // corresponds to viewbook.jsp
+}
+   
 }

@@ -31,7 +31,8 @@
         <!-- Action Buttons -->
         <div class="book-action-buttons">
             <button class="btn primary" onclick="showSection('add')">➕ Add New Book</button>
-            <button class="btn edit" onclick="showSection('list')">📋 View Books</button>
+            <button class="btn edit" onclick="toggleSection('bookListSection', this)" data-show-label="📋 View Books" data-hide-label="🔽 Hide Books">📋 View Books</button>
+
         </div>
 
         <!-- Book Form Section -->
@@ -117,7 +118,7 @@
         </div>
 
         <!-- Book List Section -->
-        <div id="bookListSection" style="display: block;">
+        <div id="bookListSection" style="display: none;">
             <h4>Book Inventory</h4>
             <table class="admin-table">
                 <thead>
@@ -256,6 +257,18 @@
             showSection('list');
         }
     }
+    function toggleSection(sectionId, button) {
+    const section = document.getElementById(sectionId);
+    const isVisible = section.style.display === 'block';
+
+    if (isVisible) {
+        section.style.display = 'none';
+        if (button) button.textContent = button.dataset.showLabel;
+    } else {
+        section.style.display = 'block';
+        if (button) button.textContent = button.dataset.hideLabel;
+    }
+}
 
     function showSection(section) {
         const formSection = document.getElementById('bookFormSection');
@@ -272,8 +285,8 @@
         }
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("Books").style.display = "block";
-        showSection('list'); // Show book list by default
-    });
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     document.getElementById("Books").style.display = "block";
+    //     showSection('list'); // Show book list by default
+    // });
 </script>

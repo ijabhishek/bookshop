@@ -185,6 +185,14 @@ public class BookService {
         return bookRepo.save(bookToUpdate);
     }
 
+    public void deleteBook(Integer bookId) {
+        bookRepo.deleteById(bookId);
+    }
+
+    public List<Book> getBooksByKeyword(String keyword) {
+        return bookRepo.findBookByKeyword(keyword);
+    }
+
     
 
 

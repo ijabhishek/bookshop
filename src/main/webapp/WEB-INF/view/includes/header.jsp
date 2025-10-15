@@ -25,7 +25,7 @@
             <a href="${pageContext.request.contextPath}/bookstore/seller" class="<c:if test='${active eq "seller"}'>active</c:if>">Seller</a>
             <a href="${pageContext.request.contextPath}/bookstore/admin" class="<c:if test='${active eq "admin"}'>active</c:if>">Admin</a>
             <form action="viewbook" method="get" class="nav-search">
-                <input type="text" name="query" placeholder="Search books...">
+                <input type="text" name="keyword" placeholder="Search books...">
                 <button type="submit">Search</button>
             </form>
         </nav>
