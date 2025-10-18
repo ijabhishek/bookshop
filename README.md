@@ -57,4 +57,4 @@ This project is intended purely as a **college demo project** to showcase the fu
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/bookshop-demo.git
+   git clone https://github.com/ijabhishek/bookshop.git
