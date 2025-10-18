@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.bookshop.model.Book;
-import com.bookshop.model.BookDTO;
+import com.bookshop.model.dto.BookDTO;
 
 public interface BookRepo extends JpaRepository<Book ,Integer > {
 

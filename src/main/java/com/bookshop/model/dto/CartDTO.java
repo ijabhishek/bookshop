@@ -1,16 +1,14 @@
-package com.bookshop.model;
+package com.bookshop.model.dto;
 
 import java.util.List;
 
-import lombok.Data;
+import com.bookshop.model.CartItem;
+import com.bookshop.model.User;
 
-@Data
-public class Cart {
+public class CartDTO {
     private int id;
     private User user;
     private List<CartItem> items;
     private double totalPrice;
-
-
-    
+      
 }

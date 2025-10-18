@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookshop.model.AuthorDTO;
-import com.bookshop.model.BookDTO;
+import com.bookshop.model.dto.AuthorDTO;
+import com.bookshop.model.dto.BookDTO;
 import com.bookshop.service.AuthorService;
 import com.bookshop.service.BookService;
 
@@ -29,7 +29,7 @@ public class HomeController {
     }
     @GetMapping({"/book/authors"})
     public ResponseEntity<List<AuthorDTO>> getAuthors(){
-       return new ResponseEntity<>(authorService.gettAuthorsWithBookName(), HttpStatus.OK);
+       return new ResponseEntity<>(authorService.getAuthorsWithBookName(), HttpStatus.OK);
     }
 
    

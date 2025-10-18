@@ -1,10 +1,14 @@
 package com.bookshop.model;
 
+import lombok.Data;
+
+@Data
 public class OrderItem {
-    private int id;
-    private Book book;
-    private int quantity;
-    private double pricePerUnit;
+    private final int id;
+    private final Order order;
+    private final Book book;
+    private final int quantity;
+    private final double priceAtPurchase;
 
     
 

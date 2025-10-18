@@ -1,13 +1,10 @@
-package com.bookshop.model;
+package com.bookshop.model.dto;
 
-import lombok.Data;
+import com.bookshop.model.Book;
 
-@Data
-public class CartItem {
+public class CartItemDTO {
     private int id;
     private Book book;
     private int quantity;
     private double price;
-    
-
 }

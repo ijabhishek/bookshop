@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookshop.model.Author;
-import com.bookshop.model.AuthorDTO;
+import com.bookshop.model.dto.AuthorDTO;
 import com.bookshop.model.Book;
 import com.bookshop.repository.AuthorRepo;
 
@@ -30,7 +30,7 @@ public class AuthorService {
     public Author getAuthorById(Integer id){
         return authorRepo.findById(id).orElse(null);
     }
-    public List<AuthorDTO> gettAuthorsWithBookName() {
+    public List<AuthorDTO> getAuthorsWithBookName() {
         return getAllAuthors().stream()
             .map(author -> new AuthorDTO(
                 author.getId(),

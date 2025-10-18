@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bookshop.model.Author;
 import com.bookshop.model.Book;
-import com.bookshop.model.BookDTO;
+import com.bookshop.model.dto.BookDTO;
 import com.bookshop.repository.AuthorRepo;
 import com.bookshop.repository.BookRepo;
 

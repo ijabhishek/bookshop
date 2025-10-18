@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bookshop.model.Author;
 import com.bookshop.model.Book;
-import com.bookshop.model.BookDTO;
+import com.bookshop.model.dto.BookDTO;
 import com.bookshop.service.AuthorService;
 import com.bookshop.service.BookService;
 
@@ -170,6 +170,6 @@ public class HomeWebController {
         model.addAttribute("suggestedBooks", suggestedBooks);
 
         return "viewbook"; // corresponds to viewbook.jsp
-}
+    }
    
 }
