@@ -6,10 +6,12 @@ import org.eclipse.tags.shaded.org.apache.regexp.recompile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookshop.model.Book;
 import com.bookshop.model.dto.AuthorDTO;
 import com.bookshop.model.dto.BookDTO;
 import com.bookshop.service.AuthorService;
@@ -31,7 +33,7 @@ public class HomeController {
     public ResponseEntity<List<AuthorDTO>> getAuthors(){
        return new ResponseEntity<>(authorService.getAuthorsWithBookName(), HttpStatus.OK);
     }
-
+   
    
     
 }

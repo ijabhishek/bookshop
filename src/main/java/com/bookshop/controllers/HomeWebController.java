@@ -87,10 +87,7 @@ public class HomeWebController {
     public String getSellerPage(){
         return "seller";
     }
-    @GetMapping({"/mycart"})
-    public String getCart() {
-        return "cart";
-    }
+    
     @GetMapping({"/addbook"})
     public String addNewBook(Model model){
         model.addAttribute("bookDTO", new BookDTO());

@@ -7,8 +7,8 @@ import com.bookshop.model.User;
 
 public class CartDTO {
     private int id;
-    private User user;
-    private List<CartItem> items;
+    private String userEmail;
+    private List<CartItemDTO> items;
     private double totalPrice;
       
 }

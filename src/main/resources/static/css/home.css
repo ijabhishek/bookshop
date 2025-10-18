@@ -130,8 +130,8 @@ body {
     right: -10px; /* Position to the right of the card */
     background-color: #f59e0b; /* Amber color for a stand-out badge */
     color: white;
-    padding: 5px 10px;
-    border-radius: 50%; /* Circle shape for a 'seal' look */
+    padding: 5px 12px;
+    border-radius: 12px; /* Circle shape for a 'seal' look */
     font-weight: 900;
     font-size: 14px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
