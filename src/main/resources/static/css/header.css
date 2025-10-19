@@ -7,6 +7,11 @@
   --shadow: rgba(0, 0, 0, 0.2);
 }
 
+/* Base Body Padding to prevent overlap with fixed header */
+body {
+  padding-top: 70px; /* Adjust based on header height */
+}
+
 /* Header Base */
 .site-header {
   background: linear-gradient(90deg, var(--primary), #4a47a3);
@@ -79,8 +84,6 @@
   display: flex;
 }
 
-
-
 .mobile-menu a {
   color: var(--text);
   text-decoration: none;
@@ -137,6 +140,38 @@
   background: rgba(255, 255, 255, 0.2);
   color: var(--accent);
   transform: translateY(-2px);
+}
+
+/* --- Cart Badge Styling (New/Updated) --- */
+.cart-link-container {
+  position: relative; /* Allows the badge to be positioned absolutely */
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px; /* Inherits main-nav padding */
+}
+
+/* Ensure the link has space for the badge */
+.main-nav a.cart-link-container {
+  padding-right: 30px; /* Gives extra room for the badge */
+}
+
+/* --- THE BADGE ITSELF --- */
+.cart-badge {
+  position: absolute;
+  top: 0px;        
+  right: 5px;      
+  padding: 2px 5px;
+  border-radius: 50%;
+  background: #ff4500; /* The visible red color */
+  color: white;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: bold;
+  text-align: center;
+  min-width: 15px; 
+  z-index: 10;
+  /* ENSURE NO HIDING STYLES ARE HERE: */
+  /* display: block; is technically the default inside the <c:if> */
 }
 
 /* Search Bar */
@@ -239,9 +274,4 @@
     transform: translateX(0);
     opacity: 1;
   }
-}
-
-/* Ensure content below header is not overlapped */
-body {
-  padding-top: 70px; /* Adjust based on header height */
 }

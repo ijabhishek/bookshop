@@ -38,6 +38,9 @@
     border: 1px solid #e5e7eb;
     text-align: center;
     font-size: 14px;
+    color: #333 !important; /* Force dark text color */
+    background-color: #f0f8ff !important; /* Light blue background to ensure cell is visible */
+    font-weight: bold; /* Make text bolder */
 }
 .cart-table th {
     background: #f9fafb;
@@ -68,6 +71,37 @@
     border: 1px solid #d1d5db;
     text-align: center;
 }
+.qty-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.qty-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: #e5e7eb;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.qty-btn:hover {
+    background: #d1d5db;
+}
+.qty-input {
+    width: 60px;
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
 
 /* Buttons */
 .btn {
@@ -97,6 +131,21 @@
 }
 .btn.danger:hover {
     background: #dc2626;
+}
+.cart-badge {
+    position: absolute;
+    top: 0px;        
+    right: 5px;      
+    padding: 2px 5px; 
+    border-radius: 50%;
+    background: #ff4500; 
+    color: white;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: bold;
+    text-align: center;
+    min-width: 15px; 
+    z-index: 10;
 }
 
 /* Cart Summary */

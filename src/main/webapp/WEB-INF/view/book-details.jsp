@@ -31,7 +31,7 @@
                 <p>${book.bookDescription}</p>
             </div>
             
-            <form action="cart/add" method="post">
+            <form action="/bookstore/addToCart" method="post">
                 <input type="hidden" name="bookId" value="${book.bookId}" />
                 <label>Qty: <input type="number" name="quantity" value="1" min="1" class="qty-input" /></label>
                 <button class="btn primary">Add to Cart</button>

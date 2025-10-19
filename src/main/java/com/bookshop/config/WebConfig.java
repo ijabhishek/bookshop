@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+// That configs the image that is being uploaded from form to the project floder path
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
