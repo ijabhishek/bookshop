@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,5 +54,13 @@ public class CartController {
     @ModelAttribute("cartCount")
     public int populateCartCount() {
         return cartService.getTotalItems();
-}
+    }
+
+    @GetMapping("removeCart/{bookId}")
+    public String removeBookFromCart(@PathVariable("bookId") int bookId ){
+        cartService.removeItemFromCart(bookId);
+        return "redirect:/bookstore/mycart";
+
+
+    }
 }

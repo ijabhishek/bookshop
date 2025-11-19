@@ -49,6 +49,17 @@ public class CartService {
         sessionCart.clear();
     }
 
+    //removing book from the cart
+    public void removeItemFromCart(int bookId) {
+   
+        if (sessionCart.containsKey(bookId)) {
+            sessionCart.remove(bookId);
+        } else {
+            // Optionally handle the case when the bookId is not found
+            System.out.println("Book with ID " + bookId + " not found in cart.");
+        }
+    }
+
     // Inside your CartService.java
     public double getCartTotal() {
         double total = 0.0;

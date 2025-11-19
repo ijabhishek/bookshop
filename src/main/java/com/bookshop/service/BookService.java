@@ -76,6 +76,11 @@ public class BookService {
     public BookDTO getBookById(Integer id) {
         return bookRepo.findById(id).map(book-> mapToDTO(book)).orElse(null);
     }
+    
+    public Book getBookEntityById(Integer id) {
+    return bookRepo.findById(id)
+        .orElseThrow(() -> new RuntimeException("Book not found with ID: " + id));
+    }
 
     public List<BookDTO> getAllBooksWithAuthorName() {
         return bookRepo.findAll().stream().map(books-> mapToDTO(books)).toList();

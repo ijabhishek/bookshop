@@ -49,6 +49,13 @@
         <scope>provided</scope>
     </dependency>
 
+	<!-- Spring security-->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-security</artifactId>
+		<version>3.5.7</version>
+	</dependency>
+
     <!-- ✅ JSTL API -->
     <dependency>
         <groupId>jakarta.servlet.jsp.jstl</groupId>
@@ -82,6 +89,7 @@
         <optional>true</optional>
     </dependency>
 
+	
 	<!-- Database -->
 	<dependency>
 		<groupId>org.postgresql</groupId>

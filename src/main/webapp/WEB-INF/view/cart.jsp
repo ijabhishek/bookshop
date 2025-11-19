@@ -86,7 +86,8 @@
                             </td>
                             
                             <td>
-                                <a href="<c:url value='/bookstore/removeCart?bookId=${book.bookId}'/>" class="btn danger small">Remove</a>
+                                <a href="<c:url value='/bookstore/removeCart/${book.bookId}'/>" class="btn danger small">Remove</a>
+
                             </td>
                         </tr>
                     </c:forEach>
@@ -97,7 +98,9 @@
         <div class="cart-summary">
             <%-- FIX: Added id="cart-total" for JavaScript update --%>
             <h3>Total: ₹<span id="cart-total"><fmt:formatNumber value="${cartTotal}" type="number" minFractionDigits="2" /></span></h3>
-            <a href="<c:url value='/checkout'/>" class="btn primary">Proceed to Checkout</a>
+            <form action="<c:url value='/bookstore/checkout'/>" method="post">
+                <button type="submit" class="btn primary">Proceed to Checkout</button>
+            </form>
         </div>
     </c:if>
 </div>

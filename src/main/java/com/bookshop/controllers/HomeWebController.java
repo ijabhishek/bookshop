@@ -163,4 +163,13 @@ public class HomeWebController {
         return "viewbook";
     }
 
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+    @GetMapping("/register")
+    public String getRegisterPage() {
+        return "register";
+    }
+
 }
