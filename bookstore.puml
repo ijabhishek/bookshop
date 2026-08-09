@@ -1,0 +1,233 @@
+@startuml BookstoreUML
+
+title **Online Bookstore Application - Class Diagram**
+
+' ========== Packages ==========
+
+package "com.bookshop.model" {
+    
+    class User {
+        - userId: String
+        - firstName: String
+        - password: String
+        - email: String
+        - phoneNumber: String
+        - role: String
+        - address: String
+        - orders: List<Order>
+    }
+
+    class Book {
+        - bookId: int
+        - isbn: String
+        - title: String
+        - publishedYear: LocalDate
+        - author: Author
+        - sellingPrice: double
+        - discountedPrice: double
+        - bookDescription: String
+        - stock: int
+        - imageUrl: String
+        - category: Category
+        - bookAvailable: boolean
+    }
+
+    class Author {
+        - id: int
+        - authorName: String
+        - imageUrl: String
+        - biography: String
+        - birthDate: LocalDate
+        - nationality: String
+        - books: List<Book>
+    }
+
+    enum Category {
+        FANTASY
+        MYSTERY
+        THRILLER
+        HISTORY
+        TECHNOLOGY
+        ROMANCE
+        PHILOSOPHY
+        SCIENCE
+    }
+
+    class Cart {
+        - id: int
+        - user: User
+        - items: List<CartItem>
+        - double totalPrice
+    }
+
+    class CartItem {
+        - id: int
+        - book: Book
+        - quantity: int
+        - price: double
+    }
+
+    class Order {
+        - orderId: int
+        - user: User
+        - orderItems: List<OrderItem>
+        - status: Status
+        - orderDate: LocalDateTime
+        - double: totalAmount
+    }
+
+    class OrderItem {
+        - id: int
+        - book: Book
+        - order: Order
+        - quantity: int
+        - priceAtPurchase: double
+    }
+
+    enum Status {
+        PENDING
+        SHIPPED
+        DELIVERED
+    }
+    
+}
+
+package "com.bookshop.model.dto" {
+
+    class BookDTO {
+        - bookId: int
+        - isbn: String
+        - title: String
+        - imageUrl: String
+        - author: Author
+        - authorId: int
+        - authorName: String
+        - sellingPrice: double
+        - bookDescription: String
+        - category: Category
+        - publishedYear: LocalDate
+        - stock: int
+        - discountedPrice: double
+        - bookAvailable: boolean
+    }
+
+    class AuthorDTO {
+        - id: int
+        - authorName: String
+        - imageUrl: String
+        - biography: String
+        - birthDate: LocalDate
+        - nationality: String
+        - bookNames: List<String>
+    }
+}
+
+
+
+package "com.bookshop.controllers" {
+    class HomeController {
+        - bookService: BookService
+        - authorService: AuthorService
+        + getBooks(): ResponseEntity<List<BookDTO>>
+        + getAuthors(): ResponseEntity<List<AuthorDTO>>
+    }
+
+    class HomeWebController {
+        + getBooksWithAuthor(model: Model): String
+        + getAdminPage(model: Model): String
+        + editBookByAdmin(bookId: Integer, model: Model): String
+        + updateBookByAdmin(bookDTO: BookDTO, imageFile: MultipartFile, redirectAttributes: RedirectAttributes): String
+        + getSellerPage(): String
+        + getCart(): String
+        + addNewBook(model: Model): String
+        + bookdetails(bookId: Integer, model: Model): String
+        + authorDetails(authorId: Integer, model: Model): String
+        + addNewBook(bookDTO: BookDTO, imageFile: MultipartFile, redirectAttributes: RedirectAttributes): String
+        + deleteBookById(bookId: Integer): String
+        + viewBookResults(keyword: String, model: Model): String
+    }
+}
+
+package "com.bookshop.service" {
+    class BookService {
+        - uploadDir: String
+        - authorService: AuthorService
+        - bookRepo: BookRepo
+        - modelMapper: ModelMapper
+
+        + getAllBooks(): List<Book>
+        + getBookById(id: Integer): BookDTO
+        + getAllBooksWithAuthorName(): List<BookDTO>
+        + getAllBooksByAuthorId(authorId: int): List<BookDTO>
+        + saveBook(bookDTO: BookDTO, imageFile: MultipartFile): Book
+        + updateBook(bookDTO: BookDTO, imageFile: MultipartFile): Book
+        + deleteBook(bookId: Integer): void
+        + getBooksByKeyword(keyword: String): List<Book>
+        
+    }
+
+    class AuthorService {
+        - authorRepo: AuthorRepo
+        - modelMapper: ModelMapper
+        + getAllAuthors(): List<Author>
+        + getAuthorById(id: Integer): Author
+        + getAuthorsWithBookName(): List<AuthorDTO>
+    }
+}
+
+package "com.bookshop.repository" {
+
+    interface JpaRepository<T, ID>
+
+    interface BookRepo {
+        + findByAuthorId(authorId: int): List<Book>
+        + findBookByKeyword(keyword: String): List<Book>
+    }
+
+    interface AuthorRepo {
+    }
+}
+
+BookRepo -|> JpaRepository
+AuthorRepo -|> JpaRepository
+
+' ========== Relationships ==========
+
+User "1" o-- "*" Cart
+Cart "1" o-- "*" CartItem
+CartItem "*" --> "1" Book
+
+User "1" o-- "*" Order
+Order "1" o-- "*" OrderItem
+OrderItem "*" --> "1" Book
+Order "*" --> "1" Status
+
+Book "1" --> "1" Author
+Book "1" --> "1" Category
+
+' Controllers → Services
+HomeController --> BookService
+HomeWebController --> AuthorService
+HomeWebController --> BookService
+
+' Services → Repositories
+BookService --> BookRepo
+AuthorService --> AuthorRepo
+
+' Services → Other dependencies (external & internal)
+BookService --> Book : uses for entity operations
+BookService --> BookDTO : returns DTOs in responses
+BookService --> BookRepo : accesses database
+BookService --> Author : fetches Author for relation
+BookService --> AuthorService : delegates author logic
+BookService --> MultipartFile : handles uploaded book images
+BookService --> ModelMapper : maps between Book and BookDTO
+
+AuthorService --> Author : manages Author entity
+AuthorService --> AuthorDTO : returns author data
+AuthorService --> ModelMapper : converts Author <-> AuthorDTO
+
+BookDTO --> Book : represents Book data for transfer
+AuthorDTO --> Author : represents Author data for transfer
+
+@enduml

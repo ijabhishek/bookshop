@@ -1,0 +1,102 @@
+/* ===== Container for whole page content ===== */
+.main-content {
+    max-width: 1100px;
+    margin: 20px auto 60px;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Section Titles ===== */
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 40px 0 25px;
+    text-align: center;
+    border-bottom: 3px solid #ff6600;
+    padding-bottom: 8px;
+}
+
+/* ===== Book container: flex grid ===== */
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* ===== Individual book card ===== */
+.book-card {
+    background-color: #fff;
+    width: 180px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.book-card:hover {
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.25);
+}
+
+/* ===== Book link styles (remove default link underline) ===== */
+.book-card a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+/* ===== Book cover image ===== */
+.book-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ===== Book details container ===== */
+.book-details {
+    padding: 12px 10px;
+}
+
+/* ===== Book title ===== */
+.book-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== Book meta details (author, category, year) ===== */
+.book-author,
+.book-category,
+.book-year {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+    .book-container {
+        justify-content: flex-start;
+    }
+    .book-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-card {
+        width: 100%;
+    }
+}

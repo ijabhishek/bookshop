@@ -1,0 +1,153 @@
+/* ---------------------------------- */
+/* 1. POPUP OVERLAY & BOX STYLING     */
+/* ---------------------------------- */
+
+.popup-overlay {
+    /* Critical: Hides the pop-up initially */
+    display: none; 
+    
+    /* Overlay positioning */
+    position: fixed;
+    z-index: 2000; /* Higher Z-index to ensure it sits above everything, including the fixed header (z-index: 1000) */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Uses flex from JS openPopup('id').style.display = "flex"; */
+    align-items: center; 
+    justify-content: center;
+    
+    /* Enhanced Semi-transparent, blurred background (Glassmorphism effect) */
+    background-color: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(4px); /* Adds a nice blur to the background content */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* When the JS sets display: flex, we use opacity to animate it */
+.popup-overlay[style*="display: flex"] {
+    opacity: 1;
+}
+
+.popup-box {
+    background-color: #f7f9fc; /* Slightly off-white background */
+    padding: 30px;
+    border-radius: 12px;
+    
+    /* Larger, softer shadow using the defined variable */
+    box-shadow: 0 10px 30px var(--shadow);
+    
+    max-width: 95%;
+    width: 450px; /* Slightly wider box for better form flow */
+    position: relative;
+    
+    /* Simple scale animation on load */
+    transform: scale(0.95);
+    transition: transform 0.3s ease-out;
+}
+
+.popup-overlay[style*="display: flex"] .popup-box {
+     transform: scale(1);
+}
+
+.popup-box h2 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px;
+    font-size: 1.6rem;
+}
+
+/* ---------------------------------- */
+/* 2. CLOSE BUTTON STYLING            */
+/* ---------------------------------- */
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px; /* Larger icon */
+    font-weight: 300; 
+    color: #666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--button); /* Use the button color on hover */
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: rotate(90deg);
+}
+
+/* ---------------------------------- */
+/* 3. FORM ELEMENTS STYLING           */
+/* ---------------------------------- */
+
+.popup-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between form elements */
+}
+
+.popup-box input[type="text"],
+.popup-box input[type="email"],
+.popup-box textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Important for padding/width calculation */
+}
+
+.popup-box input[type="text"]:focus,
+.popup-box input[type="email"]:focus,
+.popup-box textarea:focus {
+    border-color: var(--primary); /* Focus border color */
+    box-shadow: 0 0 0 3px rgba(43, 42, 114, 0.3); /* Subtle blue glow */
+    outline: none;
+    background-color: #fff;
+}
+
+.popup-box textarea {
+    resize: vertical; /* Allow vertical resizing, but not horizontal */
+    min-height: 100px;
+}
+
+/* ---------------------------------- */
+/* 4. BUTTON STYLING (Submission)     */
+/* ---------------------------------- */
+
+.popup-box button[type="submit"] {
+    background: var(--button);
+    color: var(--text);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    
+    /* Lifted look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.popup-box button[type="submit"]:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-box button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}

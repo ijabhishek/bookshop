@@ -1,0 +1,17 @@
+/* Seller dashboard */
+.seller-container{max-width:1200px;margin:28px auto;padding:0 20px 40px}
+.seller-role-banner{background:#eef6ff;border:1px solid #cfe2ff;border-radius:10px;padding:12px 16px;margin-bottom:18px}
+.seller-container h2{margin-bottom:10px}.seller-container h3{margin:30px 0 14px}
+.seller-books{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.seller-book{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid #ddd;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.seller-thumb{width:78px;height:105px;object-fit:cover;border-radius:8px;background:#f3f3f3}
+.seller-book h4{margin:0 0 8px}.seller-book p{margin:5px 0;color:#555}
+.seller-writer-panel{padding:20px;border:1px solid #ddd;border-radius:12px;background:#fff}
+.seller-writer-list{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.writer-chip{padding:6px 10px;border-radius:999px;background:#f1f3f5;font-size:.9rem}
+.admin-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #ddd;border-radius:10px;overflow:hidden}
+.admin-table th,.admin-table td{padding:11px 12px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+.admin-table th{background:#f7f8fa}.admin-table tr:last-child td{border-bottom:none}
+.flash-message{padding:12px 15px;border-radius:8px;margin:12px 0;background:#e8f7ee;color:#176b36}
+.flash-message.error{background:#fff0f0;color:#a12626}
+@media(max-width:700px){.seller-container{padding:0 12px}.seller-book{flex-direction:column}.admin-table{display:block;overflow-x:auto;white-space:nowrap}.form-grid{grid-template-columns:1fr!important}}

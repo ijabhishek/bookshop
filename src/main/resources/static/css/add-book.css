@@ -1,0 +1,89 @@
+/* General container */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Title */
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Input fields */
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(74,144,226,0.3);
+}
+
+/* Buttons */
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn.primary {
+    background: #4a90e2;
+    color: white;
+}
+
+.btn.primary:hover {
+    background: #357ABD;
+}
+
+.btn.secondary {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.btn.secondary:hover {
+    background: #ccc;
+}
+
+/* Smooth animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
